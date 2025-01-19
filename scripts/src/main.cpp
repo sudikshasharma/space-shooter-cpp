@@ -1,6 +1,7 @@
-#include<iostream.h>
+#include<iostream>
+
 int main()
 {
-std::cout<<"HEY";
-return 0;
+	std::cout<<"HEY";
+	return 0;
 }
