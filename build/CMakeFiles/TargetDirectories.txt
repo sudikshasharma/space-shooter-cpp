@@ -1,0 +1,3 @@
+C:/Projects/Personal/SpaceShooterCpp/build/CMakeFiles/SpaceShooterGame.dir
+C:/Projects/Personal/SpaceShooterCpp/build/CMakeFiles/ALL_BUILD.dir
+C:/Projects/Personal/SpaceShooterCpp/build/CMakeFiles/ZERO_CHECK.dir
