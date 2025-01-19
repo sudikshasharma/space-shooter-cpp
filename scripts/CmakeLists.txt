@@ -1,1 +1,20 @@
-add_executable(${SPACE_SHOOTER_TARGET} ${CMAKE_CURRENT_SOURCE_DIR/src/main.cpp)
+add_executable(${SPACE_SHOOTER_TARGET} src/main.cpp)
+
+
+target_link_libraries(${SPACE_SHOOTER_TARGET} PUBLIC sfml-graphics)
+target_link_libraries(${SPACE_SHOOTER_TARGET} PUBLIC sfml-system)
+target_link_libraries(${SPACE_SHOOTER_TARGET} PUBLIC sfml-window)
+
+function(CopyDllToTarget LIB_DLL TARGET_NAME)
+	add_custom_command(TARGET ${TARGET_NAME}
+	POST_BUILD
+	COMMAND
+	${CMAKE_COMMAND} -E copy_if_different
+	$<TARGET_FILE:${LIB_DLL}>
+	$<TARGET_FILE_DIR:${TARGET_NAME}>
+	)
+endfunction()
+
+CopyDllToTarget(sfml-graphics ${SPACE_SHOOTER_TARGET})
+CopyDllToTarget(sfml-system ${SPACE_SHOOTER_TARGET})
+CopyDllToTarget(sfml-window ${SPACE_SHOOTER_TARGET})

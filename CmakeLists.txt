@@ -8,4 +8,16 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(SPACE_SHOOTER_TARGET SpaceShooterGame)
-add_executable(${SPACE_SHOOTER_TARGET} ${CMAKE_CURRENT_SOURCE_DIR}/scripts/src/main.cpp)
+add_subdirectory(scripts)
+
+include(FetchContent)
+set(SFML_LIB SFML)
+
+FetchContent_Declare(
+	${SFML_LIB}
+	GIT_REPOSITORY https://github.com/SFML/SFML
+	GIT_TAG 2.5.1 
+	GIT_SHALLOW FALSE
+)
+
+FetchContent_MakeAvailable(${SFML_LIB})
