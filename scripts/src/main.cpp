@@ -1,19 +1,11 @@
+#include<memory>
 #include<iostream>
 #include<SFML/Graphics.hpp>
+#include"framework/Application.h"
 
 int main()
 {
-	sf::RenderWindow myWindow{ sf::VideoMode(400, 400), "MyWindow" };
-	while (myWindow.isOpen())
-	{
-		sf::Event event;
-		while (myWindow.pollEvent(event))
-		{
-			if (event.type == sf::Event::EventType::Closed) {
-				myWindow.close();
-			}
-		}
-
-	}
+	std::unique_ptr<ss::Application> newGame = std::make_unique<ss::Application>();
+	newGame->Run();
 	return 0;
 }
