@@ -1,4 +1,4 @@
-#include <iostream>
+#include <framework/Core.h>
 #include <SFML/Graphics.hpp>
 #include "framework/Application.h"
 
@@ -35,7 +35,9 @@ void ss::Application::Run()
 
 void ss::Application::Tick(float deltaTime)
 {
-	std::cout << "Rendered Frame Rate : " << 1 / deltaTime << std::endl;
+	//std::cout << "Rendered Frame Rate : " << 1 / deltaTime << std::endl;
+	//// printf(in stdio.h) is faster than cout(iostream) to log, thus gives better framerate
+	LOG_DATA("Rendered Frame Rate : %f", 1 / deltaTime);
 }
 
 void ss::Application::TickInternal(float deltaTime)
