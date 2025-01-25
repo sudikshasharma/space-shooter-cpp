@@ -1,0 +1,20 @@
+add_executable(${SPACE_SHOOTER_GAME_TARGET}
+			   ${CMAKE_CURRENT_SOURCE_DIR}/include/gameframework/GameApplication.h
+			   ${CMAKE_CURRENT_SOURCE_DIR}/src/gameframework/GameApplication.cpp
+)
+
+target_include_directories(${SPACE_SHOOTER_GAME_TARGET} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+
+target_link_libraries(${SPACE_SHOOTER_GAME_TARGET} PUBLIC ${SPACE_SHOOTER_CORE_TARGET})
+
+function(CopyLibDirToTarget LIB_DLL TARGET_NAME)
+	add_custom_command(TARGET ${TARGET_NAME}
+	POST_BUILD
+	COMMAND
+	${CMAKE_COMMAND} -E copy_directory
+	$<TARGET_FILE_DIR:${LIB_DLL}>
+	$<TARGET_FILE_DIR:${TARGET_NAME}>
+	)
+endfunction()
+
+CopyLibDirToTarget(${SPACE_SHOOTER_CORE_TARGET} ${SPACE_SHOOTER_GAME_TARGET})
